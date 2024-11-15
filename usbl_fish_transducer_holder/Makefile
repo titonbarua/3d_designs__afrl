@@ -1,13 +1,13 @@
-PREFIX=usbl_fish_plate_design
+PREFIX=usbl_fish_transducer_holder
 
-F3D_COLOR=1.0,0.1,0.1
-F3D_ROUGHNESS=0.3
-F3D_METALLIC=0.7
+F3D_COLOR=0.3,0.1,0.8
+F3D_ROUGHNESS=0.5
+F3D_METALLIC=0.5
 
-F3D_CAM_POS="-270.223,-325.058,708.206"
-F3D_CAM_VIEW_UP="0.533599,0.678345,0.505094"
-F3D_CAM_FOCAL_POINT="-12.5642,5.16936,-7.48128"
-F3D_CAM_VIEW_ANGLE="19.4333"
+F3D_CAM_POS="260.125,-129.528,232.701"
+F3D_CAM_VIEW_UP="-0.559081,0.269519,0.784084"
+F3D_CAM_FOCAL_POINT="5.64427,-6.84427,11.1518"
+F3D_CAM_VIEW_ANGLE="23.9444"
 
 F3D_OPTS=--axis --grid --no-background --resolution=1600,1600
 
@@ -22,7 +22,7 @@ export_stl: $(DESIGN_FILE)
 	python3 $(DESIGN_FILE) export_stl $(STL_FILE)
 
 
-render_png: $(STL_FILE)
+render_png: export_stl
 	f3d --color=$(F3D_COLOR) $(F3D_OPTS) \
 		--roughness=$(F3D_ROUGHNESS) \
 		--metallic=$(F3D_METALLIC) \

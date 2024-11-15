@@ -81,13 +81,15 @@ def create_anchor():
         Pos(Z=th - edo/4)
         * Cylinder(radius=d/2 - shell_thickness, height=edo/2))
 
+    # Round some of the vertical edges.
+    # anc = fillet(anc.edges().filter_by(Axis.Z), radius=4)
+
     # Subtract enclosure shape.
     anc -= (
         Pos(Z=-edo/2)
         * Rot(X=90)
         * Cylinder(radius=edo/2, height=d * 4))
 
-    anc = fillet(anc.edges().filter_by(Axis.Z), radius=4)
 
     return anc
 
@@ -174,4 +176,4 @@ if __name__ == "__main__":
         
     elif sys.argv[1] == "export_stl":
         export_path = sys.argv[2]
-        export_stl(design, export_path)
+        export_stl(design, export_path, angular_tolerance=0.05)
