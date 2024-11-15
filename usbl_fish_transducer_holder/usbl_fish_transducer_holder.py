@@ -82,7 +82,7 @@ def create_anchor():
         * Cylinder(radius=d/2 - shell_thickness, height=edo/2))
 
     # Round some of the vertical edges.
-    # anc = fillet(anc.edges().filter_by(Axis.Z), radius=4)
+    anc = fillet(anc.edges().filter_by(Axis.Z), radius=4)
 
     # Subtract enclosure shape.
     anc -= (
