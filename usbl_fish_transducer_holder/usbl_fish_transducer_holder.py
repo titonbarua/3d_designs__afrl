@@ -110,7 +110,7 @@ def create_transducer_seat():
     return seat
 
 
-def connecting_struts():
+def create_connecting_struts():
     ad = anchor_props["dia"]
     ath = anchor_props["thinnest_h"]
     sd = transducer_seat_props["dia"]
@@ -134,7 +134,7 @@ def connecting_struts():
     return Pos(Z=ath) * (struts1 + struts2)
 
 
-def cable_routing_holes():
+def create_cable_routing_holes():
     edo = enclosure_props["outer_dia"]
     ath = anchor_props["thinnest_h"]
     d = cable_routing_hole_dia
@@ -151,8 +151,8 @@ def create_design():
     design = Part()
     design += create_transducer_seat()
     design += create_anchor()
-    design += connecting_struts()
-    design -= cable_routing_holes()
+    design += create_connecting_struts()
+    design -= create_cable_routing_holes()
 
     # Cut the weak curve from underneath for ease of 3D printing.
     ath = anchor_props["thinnest_h"]
